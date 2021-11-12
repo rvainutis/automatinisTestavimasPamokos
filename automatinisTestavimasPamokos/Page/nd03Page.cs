@@ -62,6 +62,5 @@ namespace automatinisTestavimasPamokos.Page
                 Assert.IsTrue(!element.Selected);
             }
         }
-
     }
 }
