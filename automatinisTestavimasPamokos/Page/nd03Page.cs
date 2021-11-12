@@ -22,7 +22,7 @@ namespace automatinisTestavimasPamokos.Page
             _driver = webDriver;
         }
 
-        public void checkSingleBox (bool singleCheck)
+        public void checkSingleBox(bool singleCheck)
         {
             if (singleCheck != _checkSingleBox.Selected)     // tikriname, ar checkbox pazymetas, jeigu pazymetas -- nespaudziame, jei nepazymetas -- spaudziame
             {

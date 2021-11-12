@@ -62,13 +62,11 @@
     <Compile Include="Demo.cs" />
     <Compile Include="NamuDarbas005.cs" />
     <Compile Include="Page\BasePage.cs" />
-    <Compile Include="Page\NamuDarbai003Page.cs" />
     <Compile Include="Page\nd03Page.cs" />
     <Compile Include="Page\SeleniumInputPage.cs" />
     <Compile Include="Page\VartuTechnikaPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestWebDriver.cs" />
-    <Compile Include="Test\NamuDarbai003Test.cs" />
     <Compile Include="Test\nd03Test.cs" />
     <Compile Include="Test\OneTimeSetupAttribute.cs" />
     <Compile Include="Test\SeleniumInputTest.cs" />
