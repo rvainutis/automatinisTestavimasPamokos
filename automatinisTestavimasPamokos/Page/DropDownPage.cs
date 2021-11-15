@@ -21,6 +21,20 @@ namespace automatinisTestavimasPamokos.Page
                 "Florida",
                 "Ohio"
             };
+        private readonly List<string> selectedStates2 = new List<string>
+            {
+                "Florida",
+                "Ohio",
+                "Washington"
+            };
+        private readonly List<string> selectedStates3 = new List<string>
+            {
+                "Florida",
+                "Ohio",
+                "Washington",
+                "Texas"
+            };
+
         private SelectElement DropDown => new SelectElement(Driver.FindElement(By.Id("select-demo")));
         private IWebElement ResultTextElement => Driver.FindElement(By.CssSelector(".selected-value"));
         private IWebElement ResultFirstSelectedState => Driver.FindElement(By.CssSelector(".getall-selected"));
@@ -85,7 +99,7 @@ namespace automatinisTestavimasPamokos.Page
             }
             action.KeyUp(Keys.LeftControl);
             //action.Build().Perform();
-            action.Click(FirstSelectedButton);
+            //action.Click(FirstSelectedButton);
             action.Build().Perform();
             return this;
         }
@@ -107,6 +121,20 @@ namespace automatinisTestavimasPamokos.Page
             string firstStateTrim = ResultFirstSelectedState.Text;
             firstStateTrim = firstStateTrim.Replace(ResultText2, "");
             Assert.AreEqual(firstStateTrim, selectedStates[0], "States not the same.");
+            return this;
+        }
+        public DropDownPage GetFirstSelectedState2()
+        {
+            string firstStateTrim = ResultFirstSelectedState.Text;
+            firstStateTrim = firstStateTrim.Replace(ResultText2, "");
+            Assert.AreEqual(firstStateTrim, selectedStates2[0], "States not the same.");
+            return this;
+        }
+
+        public DropDownPage GetAllSelectedStates()
+        {
+            string usedStateList = $"Options selected are : {selectedStates3[0]},{selectedStates[1]},{selectedStates3[2]},{selectedStates3[3]}";
+            Assert.AreEqual(usedStateList, ResultFirstSelectedState.Text, "States not the same.");
             return this;
         }
     }

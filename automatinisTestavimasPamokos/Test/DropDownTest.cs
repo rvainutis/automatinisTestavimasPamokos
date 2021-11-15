@@ -54,7 +54,50 @@ namespace automatinisTestavimasPamokos.Test
                 "Ohio"
             };
             _page.SelectedFromMultipleDropDownByValue(selectedStates)
+                .ClickFirstSelectedButton()
                 .GetFirstSelectedState();
-        }        
+        }
+
+        [Test]
+        public void TestTwoStatesGetAllSelected()
+        {
+            List<string> selectedStates = new List<string>
+            {
+                "Florida",
+                "Ohio"
+            };
+            _page.SelectedFromMultipleDropDownByValue(selectedStates)
+                .ClickAllSelectedButton()
+                .GetAllSelectedStates();
+        }
+
+        [Test]
+        public void TestThreeStatesFirstSelected()
+        {
+            List<string> selectedStates = new List<string>
+            {
+                "Florida",
+                "Ohio",
+                "Washington"
+            };
+            _page.SelectedFromMultipleDropDownByValue(selectedStates)
+                .ClickFirstSelectedButton()
+                .GetFirstSelectedState2();
+        }
+
+        [Test]
+        public void TestFourStatesGetAllSelected()
+        {
+            List<string> selectedStates = new List<string>
+            {
+                "Florida",
+                "Ohio",
+                "Washington",
+                "Texas"
+            };
+            _page.SelectedFromMultipleDropDownByValue(selectedStates)
+                .ClickAllSelectedButton()
+                .GetAllSelectedStates();
+        }
     }
 }
