@@ -14,7 +14,7 @@ namespace automatinisTestavimasPamokos.Test
     {
         private static DropDownPage _page;
 
-        [OneTimeSetup]
+        [OneTimeSetUp]
         public static void SetUp()
         {
             IWebDriver driver = new ChromeDriver();
@@ -24,14 +24,10 @@ namespace automatinisTestavimasPamokos.Test
         }
         
         [OneTimeTearDown]
-
         public static void TearDown()
         {
             _page.CloseBrowser();
         }
-
-
-        // GERAI PERZIURETI, NES NEPERDUODA I PAGE/TEST
         //[Order(1)]
         [Test]
         public void TestDropwDown()
