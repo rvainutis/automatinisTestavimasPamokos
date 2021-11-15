@@ -24,13 +24,28 @@ namespace automatinisTestavimasPamokos.Test
         }
         
         [OneTimeTearDown]
+
         public static void TearDown()
         {
             _page.CloseBrowser();
         }
 
+
+        // GERAI PERZIURETI, NES NEPERDUODA I PAGE/TEST
         //[Order(1)]
         [Test]
-        public 
+        public void TestDropwDown()
+        {
+            _page.SelectFromDropdownByText("Friday")
+                .VerifyResult("Friday");
+        }
+
+        //[Order(2)]
+        [Test]
+        public void TestMultiDropDown()
+        {
+            _page.SelectFromMultiDropDownByValue("Ohio", "Florida")
+                .ClickFirstSelectedButton();
+        }
     }
 }
