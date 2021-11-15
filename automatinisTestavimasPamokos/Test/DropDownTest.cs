@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace automatinisTestavimasPamokos.Test
@@ -43,5 +44,17 @@ namespace automatinisTestavimasPamokos.Test
             _page.SelectFromMultiDropDownByValue("Ohio", "Florida")
                 .ClickFirstSelectedButton();
         }
+
+        [Test]
+        public void TestTwoStatesFirstSelected()
+        {
+            List<string> selectedStates = new List<string>
+            {
+                "Florida",
+                "Ohio"
+            };
+            _page.SelectedFromMultipleDropDownByValue(selectedStates)
+                .GetFirstSelectedState();
+        }        
     }
 }
