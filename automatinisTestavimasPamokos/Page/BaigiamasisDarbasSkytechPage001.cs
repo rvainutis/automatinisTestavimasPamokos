@@ -12,15 +12,16 @@ namespace automatinisTestavimasPamokos.Page
     public class SkytechLoginPage : BasePage
     {
         // konstantos
-        private const string PageAddress = "https://www.skytech.lt/login.php";
+        private const string PageAddress001 = "https://www.skytech.lt/login.php";
+        private const string PageAddress002 = "https://www.skytech.lt/login.php";
+        private const string PageAddress003 = "https://www.skytech.lt/login.php";
         private const string ManoDuomenys = "Mano duomenys";
-        //private const string ElPastas = "hohag62978@elastit.com";
-        //private const string Slaptazodis = "gediminas.testauskas123";
+        private const string RegisterSuccess = "Jūsų paskyra sėkmingai sukurta!";
 
         // web elementai
-        
+
         // esamas vartotojas
-        
+
         private IWebElement PrisijunkiteMain => Driver.FindElement(By.CssSelector("#body > div.pageouter > div.pagewrapper > div.topmenu-wrap > div > div > a.link-login"));
         private IWebElement ElPastoAdresasLoginInput => Driver.FindElement(By.CssSelector("#checkout_login_login > div:nth-child(1) > div:nth-child(2) > input[type=text]"));
         private IWebElement SlaptazodisLoginInput => Driver.FindElement(By.CssSelector("#checkout_login_login > div:nth-child(2) > div:nth-child(2) > input[type=password]"));
@@ -34,16 +35,18 @@ namespace automatinisTestavimasPamokos.Page
         private IWebElement VardasRegisterInput => Driver.FindElement(By.CssSelector("#checkout_login_register > div:nth-child(1) > div:nth-child(2) > input[type=text]"));
         private IWebElement PavardeRegisterInput => Driver.FindElement(By.CssSelector("#checkout_login_register > div:nth-child(2) > div:nth-child(2) > input[type=text]"));
         private IWebElement TelNrRegisterInput => Driver.FindElement(By.CssSelector("#checkout_login_register > div:nth-child(3) > div:nth-child(2) > input[type=text]"));
-        private IWebElement ElPastoAdresasRegisterInput => Driver.FindElement(By.CssSelector("#checkout_login_register > div:nth-child(1) > div:nth-child(2) > input[type=text]"));
+        private IWebElement ElPastoAdresasRegisterInput => Driver.FindElement(By.CssSelector("#checkout_login_register > div:nth-child(4) > div:nth-child(2) > input[type=text]"));
         private IWebElement SlaptazodisRegisterInput => Driver.FindElement(By.CssSelector("#checkout_login_register > div:nth-child(5) > div:nth-child(2) > input[type=password]"));
         private IWebElement SlaptazodisKartotiRegisterInput => Driver.FindElement(By.CssSelector("#checkout_login_register > div:nth-child(6) > div:nth-child(2) > input[type=password]"));
         private IWebElement CheckTaisyklesRegister => Driver.FindElement(By.CssSelector("#checkout_login_register > div:nth-child(7) > div:nth-child(1) > input[type=checkbox]"));
         private IWebElement CheckPrivatumasRegister => Driver.FindElement(By.CssSelector("#checkout_login_register > div:nth-child(8) > div:nth-child(1) > input[type=checkbox]"));
         private IWebElement CheckNaujienosRegister => Driver.FindElement(By.CssSelector("#checkout_login_register > div:nth-child(9) > div > input[type=checkbox]"));
+        private IWebElement SubmitRegisterButton => Driver.FindElement(By.CssSelector("#submit-register > div > input"));
+        private IWebElement CheckRegisterSuccess => Driver.FindElement(By.CssSelector("#centerpanel > table > tbody > tr > td.static-title > span"));
 
         public SkytechLoginPage(IWebDriver webDriver) : base(webDriver)
         {
-            Driver.Url = PageAddress;
+            Driver.Url = PageAddress001;
         }
 
         // bendri
@@ -177,6 +180,49 @@ namespace automatinisTestavimasPamokos.Page
         public SkytechLoginPage InputSlaptazodisTextRegister(string slaptazodis)
         {
             SlaptazodisRegisterInput.SendKeys(slaptazodis);
+            return this;
+        }
+
+        public SkytechLoginPage ClickSlaptazodisKartotiRegisterInput()
+        {
+            SlaptazodisKartotiRegisterInput.Click();
+            SlaptazodisKartotiRegisterInput.Clear();
+            return this;
+        }
+
+        public SkytechLoginPage InputSlaptazodisKartotiTextRegister(string slaptazodis)
+        {
+            SlaptazodisKartotiRegisterInput.SendKeys(slaptazodis);
+            return this;
+        }
+
+        public SkytechLoginPage ClickCheckmarkTaisyklesRegister()
+        {
+            CheckTaisyklesRegister.Click();
+            return this;
+        }
+
+        public SkytechLoginPage ClickCheckPrivatumasRegister()
+        {
+            CheckPrivatumasRegister.Click();
+            return this;
+        }
+
+        public SkytechLoginPage ClickCheckNaujienosRegister()
+        {
+            CheckNaujienosRegister.Click();
+            return this;
+        }
+
+        public SkytechLoginPage ClickSubmitRegisterButton()
+        {
+            SubmitRegisterButton.Click();
+            return this;
+        }
+
+        public SkytechLoginPage CheckRegisterSuccessText()
+        {
+            Assert.AreEqual(RegisterSuccess, CheckRegisterSuccess.Text, "Nesutampa/Nepavyko uzsiregistruoti.");
             return this;
         }
     }

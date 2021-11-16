@@ -45,8 +45,8 @@ namespace automatinisTestavimasPamokos.Test
                 .CheckLoginResult();
         }
 
-        [TestCase("vardas", "pavarde", "telefono_nr", "el_pastas", "slaptazodis", "slaptazodis_kartoti", TestName = "02 Skytech Register Test")]
-        public void TestRegister(string vardas, string pavarde, string telNr, string elPastas, string slaptazodis, string slaptazodisKartoti)
+        [TestCase("Osvaldas", "Penikas", "+37061212345", "vasodep998@elastit.com", "patsBaisiusiasFilmas_2021", TestName = "02 Skytech Register Test")]
+        public void TestRegister(string vardas, string pavarde, string telNr, string elPastas, string slaptazodis)
         {
             _page.ClickRegister()
                 .ClickVardasRegisterInput()
@@ -64,7 +64,15 @@ namespace automatinisTestavimasPamokos.Test
                 .ClickSlaptazodisRegisterInput()
                 .InputSlaptazodisTextRegister(slaptazodis)
                 .ThreadSleep500()
-                .
+                .ClickSlaptazodisKartotiRegisterInput()
+                .InputSlaptazodisKartotiTextRegister(slaptazodis)
+                .ThreadSleep500()
+                .ClickCheckmarkTaisyklesRegister()
+                .ClickCheckPrivatumasRegister()
+                .ClickCheckNaujienosRegister()
+                .ThreadSleep500()
+                .ClickSubmitRegisterButton()
+                .CheckRegisterSuccessText();
         }
     }
 }
