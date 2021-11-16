@@ -33,16 +33,38 @@ namespace automatinisTestavimasPamokos.Test
         public void TestLogin(string elPastoAdresas, string slaptazodisText)
         {
             _page.ClickLogin()
-                .ClickElPastoAdresasInput()
-                .InputElPastoAdresasText(elPastoAdresas)
+                .ClickElPastoAdresasLoginInput()
+                .InputElPastoAdresasLoginText(elPastoAdresas)
                 .ThreadSleep500()
-                .ClickSlaptazodisInput()
-                .InputSlaptazodisText(slaptazodisText)
+                .ClickSlaptazodisLoginInput()
+                .InputSlaptazodisLoginText(slaptazodisText)
                 .ThreadSleep500()
-                .CheckmarkPrisimintiMane()
+                .CheckmarkPrisimintiManeLogin()
                 .ThreadSleep500()
-                .ClickPrisijungtiButton()
+                .ClickPrisijungtiButtonLogin()
                 .CheckLoginResult();
+        }
+
+        [TestCase("vardas", "pavarde", "telefono_nr", "el_pastas", "slaptazodis", "slaptazodis_kartoti", TestName = "02 Skytech Register Test")]
+        public void TestRegister(string vardas, string pavarde, string telNr, string elPastas, string slaptazodis, string slaptazodisKartoti)
+        {
+            _page.ClickRegister()
+                .ClickVardasRegisterInput()
+                .InputVardasTextRegister(vardas)
+                .ThreadSleep500()
+                .ClickPavardeRegisterInput()
+                .InputPavardeTextRegister(pavarde)
+                .ThreadSleep500()
+                .ClickTelNrRegisterInput()
+                .InputTelNrTextRegister(telNr)
+                .ThreadSleep500()
+                .ClickElPastasRegisterInput()
+                .InputElPastasTextRegister(elPastas)
+                .ThreadSleep500()
+                .ClickSlaptazodisRegisterInput()
+                .InputSlaptazodisTextRegister(slaptazodis)
+                .ThreadSleep500()
+                .
         }
     }
 }
