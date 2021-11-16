@@ -24,10 +24,11 @@ namespace automatinisTestavimasPamokos.Page
         private IWebElement NotebookDellSecondAddToCartButton => Driver.FindElement(By.CssSelector("#centerpanel > div.contentbox-center-wrap.nopad > table.productListing > tbody > tr:nth-child(47) > td:nth-child(6) > div > div.button-label > input"));
         private IWebElement CartButton => Driver.FindElement(By.CssSelector("#krepselis > div > a > span"));
         private IWebElement CartTotalItemsCountResult => Driver.FindElement(By.Id("kcenter"));
-        private IWebElement FirstItemPrice => Driver.FindElement(By.XPath("/html/body/div[6]/div[1]/div[4]/div[2]/div[5]/form/div[1]/table[1]/tbody/tr[3]/td[6]"));
-        private IWebElement SecondItemPrice => Driver.FindElement(By.XPath("/html/body/div[6]/div[1]/div[4]/div[2]/div[5]/form/div[1]/table[1]/tbody/tr[3]/td[6]"));
+        //private IWebElement FirstItemPrice => Driver.FindElement(By.XPath("/html/body/div[6]/div[1]/div[4]/div[2]/div[5]/form/div[1]/table[1]/tbody/tr[3]/td[6]"));
+        //private IWebElement SecondItemPrice => Driver.FindElement(By.XPath("/html/body/div[6]/div[1]/div[4]/div[2]/div[5]/form/div[1]/table[1]/tbody/tr[3]/td[6]"));
         private IWebElement SumPrice => Driver.FindElement(By.CssSelector("#ktotal-top"));
-        private SelectElement ShoppingCartList => new SelectElement(Driver.FindElement(By.Id("multi-select")));
+
+        private IReadOnlyCollection<IWebElement> CartItems = Driver.FindElements(By.CssSelector(".shopping-cart-main-wrap"));
 
         public SkytechNotebooksPage(IWebDriver webDriver) : base(webDriver)
         {
@@ -82,6 +83,23 @@ namespace automatinisTestavimasPamokos.Page
             return this;
         }
 
+        public SkytechNotebooksPage CheckCartItemSum()
+        {
+            List<int> ItemPrices = new List<int>();
+
+            foreach  (IWebElement element in CartItems)
+            {
+                ItemPrices.Add(Convert.ToInt32(element.GetAttribute("line-price").Substring(0, element.GetAttribute("line-price").Length-2)));
+            }
+
+            int ResultSumTotal = ItemPrices.Sum();
+
+            Assert.AreEqual(SumPrice, ResultSumTotal, "Kainos nesutampa.");
+
+            return this;
+        }
+
+        /*
         public SkytechNotebooksPage ChekCartItemsSum()
         {
             // prekes kaina '1000.00 €' string tipo keiciame i int tipa, pries tai nukerpant du simbolius nuo turimo string'o
@@ -98,6 +116,6 @@ namespace automatinisTestavimasPamokos.Page
 
             return this;
         }
-
+        */
     }
 }

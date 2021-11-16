@@ -46,7 +46,7 @@ namespace automatinisTestavimasPamokos.Test
                 .ThreadSleep500()
                 .CheckCartItemsCount()
                 .ThreadSleep500()
-                .ChekCartItemsSum();
+                .CheckCartItemSum();
         }
     }
 }
