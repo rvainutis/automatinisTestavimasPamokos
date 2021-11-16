@@ -13,8 +13,6 @@ namespace automatinisTestavimasPamokos.Page
     {
         // konstantos
         private const string PageAddress001 = "https://www.skytech.lt/login.php";
-        private const string PageAddress002 = "https://www.skytech.lt/login.php";
-        private const string PageAddress003 = "https://www.skytech.lt/login.php";
         private const string ManoDuomenys = "Mano duomenys";
         private const string RegisterSuccess = "Jūsų paskyra sėkmingai sukurta!";
 
@@ -50,7 +48,6 @@ namespace automatinisTestavimasPamokos.Page
         }
 
         // bendri
-
         public SkytechLoginPage ClickLogin()
         {
             PrisijunkiteMain.Click();
@@ -111,7 +108,6 @@ namespace automatinisTestavimasPamokos.Page
         }
 
         // naujas vartotojas
-
         public SkytechLoginPage ClickRegister()
         {
             UzsiregistruotiButton.Click();
