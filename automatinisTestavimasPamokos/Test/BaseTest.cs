@@ -1,6 +1,8 @@
 ﻿using automatinisTestavimasPamokos.Drivers;
 using automatinisTestavimasPamokos.Page;
+using automatinisTestavimasPamokos.Tools;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -22,6 +24,14 @@ namespace automatinisTestavimasPamokos.Test
             driver = CustomDriver.GetChromeDriver();
             _dropDownPage = new DropDownPage(driver);
             _vartuTechnikaPage = new VartuTechnikaPage(driver);
+        }
+
+        [TearDown]
+
+        public static void TakeScreenshot()
+        {
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+                MyScreenshot.MakeScreenshot(driver);
         }
 
         [OneTimeTearDown]

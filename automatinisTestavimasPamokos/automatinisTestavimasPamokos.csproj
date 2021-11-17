@@ -81,6 +81,7 @@
     <Compile Include="Test\Open24Test.cs" />
     <Compile Include="Test\SeleniumInputTest.cs" />
     <Compile Include="Test\VartuTechnikaTest.cs" />
+    <Compile Include="Tools\MyScreenshot.cs" />
     <Compile Include="vartuTechnika001.cs" />
   </ItemGroup>
   <ItemGroup>

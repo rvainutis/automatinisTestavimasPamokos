@@ -13,7 +13,7 @@ namespace automatinisTestavimasPamokos.Page
 {
     public class DropDownPage : BasePage
     {
-        private const string PageAddress = "https://demo.seleniumeasy.com/basic-select-dropdown-demo.html";
+        private const string PageAddress = "https://.seleniumeasy.com/basic-select-dropdown-demo.html";
         private const string ResultText = "Day selected :- ";
         private const string ResultText2 = "First selected option is : ";
         private readonly List<string> selectedStates = new List<string>
