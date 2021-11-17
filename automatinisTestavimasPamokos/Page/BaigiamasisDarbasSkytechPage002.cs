@@ -23,12 +23,8 @@ namespace automatinisTestavimasPamokos.Page
         private IWebElement NotebookDellFirstAddToCartButton => Driver.FindElement(By.CssSelector("#centerpanel > div.contentbox-center-wrap.nopad > table.productListing > tbody > tr:nth-child(53) > td:nth-child(6) > div > div.button-label > input"));
         private IWebElement NotebookDellSecondAddToCartButton => Driver.FindElement(By.CssSelector("#centerpanel > div.contentbox-center-wrap.nopad > table.productListing > tbody > tr:nth-child(47) > td:nth-child(6) > div > div.button-label > input"));
         private IWebElement CartButton => Driver.FindElement(By.CssSelector("#krepselis > div > a > span"));
-        private IWebElement CartTotalItemsCountResult => Driver.FindElement(By.Id("kcenter"));
-        //private IWebElement FirstItemPrice => Driver.FindElement(By.XPath("/html/body/div[6]/div[1]/div[4]/div[2]/div[5]/form/div[1]/table[1]/tbody/tr[3]/td[6]"));
-        //private IWebElement SecondItemPrice => Driver.FindElement(By.XPath("/html/body/div[6]/div[1]/div[4]/div[2]/div[5]/form/div[1]/table[1]/tbody/tr[3]/td[6]"));
-        private IWebElement SumPrice => Driver.FindElement(By.CssSelector("#ktotal-top"));
-
-        //private readonly IReadOnlyCollection<IWebElement> CartItems = Driver.FindElements(By.CssSelector("div.shopping-cart-main-wrap"));
+        private IWebElement CartTotalItemsCountResult => Driver.FindElement(By.Id("kcenter"));        
+        private IWebElement SumPrice => Driver.FindElement(By.CssSelector("#ktotal-top"));                
 
         private IReadOnlyCollection<IWebElement> CartItems => Driver.FindElements(By.CssSelector("td.line-price"));
 
@@ -87,38 +83,41 @@ namespace automatinisTestavimasPamokos.Page
 
         public SkytechNotebooksPage CheckCartItemSum()
         {
-            List<string> cartItemsPricesListFullString = new List<string>();            
+            // Sarasas kainu formatu: "123.12 €"
+
+            List<string> cartItemsPricesFull = new List<string>();            
 
             foreach (IWebElement cartItem in CartItems)
             {
-                cartItemsPricesListFullString.Add(cartItem.Text);
+                cartItemsPricesFull.Add(cartItem.Text);
             }
 
-            List<string> cartItemsPricesListFullStringTrimmed = new List<string>();
+            // Sarasas kainu formatu "1 234.12"
 
-            foreach (string item in cartItemsPricesListFullString)
+            List<string> cartItemsPricesFullTrimmed = new List<string>();
+
+            foreach (string item in cartItemsPricesFull)
             {
-                cartItemsPricesListFullStringTrimmed.Add(item.Substring(0, item.Length - 2).Replace(".", ","));
+                cartItemsPricesFullTrimmed.Add(item.Substring(0, item.Length - 2).Replace(".", ",").Replace(" ", ""));
             }
 
-            List<double> cartItemsPricesListFullStringTrimmedConvertedToDouble = new List<double>();
+            // Sarasas kainu formatu "1234,12"
 
-            foreach (string item in cartItemsPricesListFullStringTrimmed)
+            List<double> cartItemsPrices = new List<double>();
+
+            foreach (string item in cartItemsPricesFullTrimmed)
             {
-                cartItemsPricesListFullStringTrimmedConvertedToDouble.Add(Convert.ToDouble(item));
+                cartItemsPrices.Add(Convert.ToDouble(item));
             }
 
-            double CartItemsTotalSum = cartItemsPricesListFullStringTrimmedConvertedToDouble.Sum();
+            double CartItemsTotalSum = cartItemsPrices.Sum();
+
+            // Parduotuves pateikta suma formatu "1 234.12 €" pakeiciame i double skaitmeni formatu "1234,12"
+            
             double TotalSumFromSite = Convert.ToDouble(SumPrice.Text.Substring(0, SumPrice.Text.Length - 2).Replace(".", ",").Replace(" ", ""));
-
 
             Assert.AreEqual(TotalSumFromSite, CartItemsTotalSum, "Nesutampa.");
 
-
-            //string TrimTotalCartSumFromSite = SumPrice.Text.Substring(0, SumPrice.Text.Length - 2);
-            //int TotalCartSumFromSite = Convert.ToInt32(TrimTotalCartSumFromSite);
-
-            //Assert.AreEqual(TotalCartSumFromSite, cartItemsPricesListSum, "Nesutampa.");
             return this;
         }
     }

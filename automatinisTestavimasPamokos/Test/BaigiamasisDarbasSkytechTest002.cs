@@ -29,6 +29,8 @@ namespace automatinisTestavimasPamokos.Test
             _page.CloseBrowser();
         }
 
+        // Pasirenkame dvi prekes, krepselyje tikriname ju kainu suma su prekiu krepselio suma pateikta parduotuveje.
+
         [Test]
         public void TestDellNotebooksCheckoutSum()
         {
