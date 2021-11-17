@@ -55,6 +55,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Drivers\Browsers.cs" />
+    <Compile Include="Drivers\CustomDriver.cs" />
     <Compile Include="NamuDarbas004.cs" />
     <Compile Include="NamuDarbas003.cs" />
     <Compile Include="NamuDarbas002.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="TestWebDriver.cs" />
     <Compile Include="Test\BaigiamasisDarbasSkytechTest001.cs" />
     <Compile Include="Test\BaigiamasisDarbasSkytechTest002.cs" />
+    <Compile Include="Test\BaseTest.cs" />
     <Compile Include="Test\DropDownTest.cs" />
     <Compile Include="Test\nd03Test.cs" />
     <Compile Include="Test\Open24Test.cs" />

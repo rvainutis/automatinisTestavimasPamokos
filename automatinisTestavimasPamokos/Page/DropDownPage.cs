@@ -45,6 +45,12 @@ namespace automatinisTestavimasPamokos.Page
         {
             Driver.Url = PageAddress;
         }
+        public DropDownPage NavigateToDefaultPage()
+        {
+            if (Driver.Url != PageAddress)
+                Driver.Url = PageAddress;
+            return this;
+        }
 
         public DropDownPage SelectFromDropdownByText(string text)
         {

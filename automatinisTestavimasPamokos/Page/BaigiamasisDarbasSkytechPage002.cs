@@ -13,8 +13,7 @@ namespace automatinisTestavimasPamokos.Page
     public class SkytechNotebooksPage : BasePage
     {
         // konstantos
-        private const string PageAddress002 = "https://www.skytech.lt/nesiojami-kompiuteriai-nesiojami-kompiuteriai-c-86_165_81.html";      // nesiojamu kompiuteriu puslapis
-        private const string CartItemsCount = "2";
+        private const string PageAddress002 = "https://www.skytech.lt/nesiojami-kompiuteriai-nesiojami-kompiuteriai-c-86_165_81.html";      // nesiojamu kompiuteriu puslapis        
 
         // web elementai
         private IWebElement NotebookDellCategoryButton => Driver.FindElement(By.CssSelector("#f-g-142 > div.line-wrap > span"));
