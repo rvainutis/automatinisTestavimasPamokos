@@ -98,7 +98,7 @@ namespace automatinisTestavimasPamokos.Page
 
             foreach (string item in cartItemsPricesListFullString)
             {
-                cartItemsPricesListFullStringTrimmed.Add(item.Substring(0, item.Length - 2));
+                cartItemsPricesListFullStringTrimmed.Add(item.Substring(0, item.Length - 2).Replace(".", ","));
             }
 
             List<double> cartItemsPricesListFullStringTrimmedConvertedToDouble = new List<double>();
@@ -109,7 +109,7 @@ namespace automatinisTestavimasPamokos.Page
             }
 
             double CartItemsTotalSum = cartItemsPricesListFullStringTrimmedConvertedToDouble.Sum();
-            double TotalSumFromSite = Convert.ToDouble(SumPrice.Text.Substring(0, SumPrice.Text.Length - 2));
+            double TotalSumFromSite = Convert.ToDouble(SumPrice.Text.Substring(0, SumPrice.Text.Length - 2).Replace(".", ",").Replace(" ", ""));
 
 
             Assert.AreEqual(TotalSumFromSite, CartItemsTotalSum, "Nesutampa.");
