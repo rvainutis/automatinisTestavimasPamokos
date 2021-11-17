@@ -27,7 +27,6 @@ namespace automatinisTestavimasPamokos.Test
         }
 
         [TearDown]
-
         public static void TakeScreenshot()
         {
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
