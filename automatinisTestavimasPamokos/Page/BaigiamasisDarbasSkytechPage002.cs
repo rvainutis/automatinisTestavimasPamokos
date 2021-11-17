@@ -30,7 +30,7 @@ namespace automatinisTestavimasPamokos.Page
 
         //private readonly IReadOnlyCollection<IWebElement> CartItems = Driver.FindElements(By.CssSelector("div.shopping-cart-main-wrap"));
 
-        private IReadOnlyCollection<IWebElement> CartItems => Driver.FindElements(By.XPath("/html/body/div[6]/div[1]/div[6]/div[2]/div[5]/form/div[1]/table[1]/tbody"));
+        private IReadOnlyCollection<IWebElement> CartItems => Driver.FindElements(By.CssSelector("td.line-price"));
 
         public SkytechNotebooksPage(IWebDriver webDriver) : base(webDriver)
         {
@@ -87,53 +87,39 @@ namespace automatinisTestavimasPamokos.Page
 
         public SkytechNotebooksPage CheckCartItemSum()
         {
-            List<int> CartItemsPriceFull = new List<int>();
-            int CartItemsPriceSum = CartItemsPriceFull.Sum();
+            List<string> cartItemsPricesListFullString = new List<string>();            
 
             foreach (IWebElement cartItem in CartItems)
             {
-                CartItemsPriceFull.Add(Convert.ToInt32(cartItem.GetAttribute("line-price").Substring(0, cartItem.GetAttribute("line-price").Length - 2)));
+                cartItemsPricesListFullString.Add(cartItem.Text);
             }
 
-            Assert.AreEqual(SumPrice, CartItemsPriceSum, "Kainos nesutampa.");
+            List<string> cartItemsPricesListFullStringTrimmed = new List<string>();
 
-            return this;
-        }
-
-
-
-        //{
-        //    List<int> ItemPrices = new List<int>();
-
-        //    foreach (IWebElement element in CartItems)
-        //    {
-        //        ItemPrices.Add(Convert.ToInt32(element.GetAttribute("line-price").Substring(0, element.GetAttribute("line-price").Length - 2)));
-        //    }
-
-        //    int ResultSumTotal = ItemPrices.Sum();
-
-        //    Assert.AreEqual(SumPrice, ResultSumTotal, "Kainos nesutampa.");
-
-        //    return this;
-        //}
-
-        /*
-        public SkytechNotebooksPage ChekCartItemsSum()
-        {
-            // prekes kaina '1000.00 €' string tipo keiciame i int tipa, pries tai nukerpant du simbolius nuo turimo string'o
-
-            int item1 = Convert.ToInt32(FirstItemPrice.Text.Substring(0, FirstItemPrice.Text.Length-2));
-            int item2 = Convert.ToInt32(SecondItemPrice.Text.Substring(0, SecondItemPrice.Text.Length - 2));
-            int sumaResult = Convert.ToInt32(SumPrice.Text.Substring(0, SecondItemPrice.Text.Length - 2));
-
-
-            if (item1 + item2 == sumaResult)
+            foreach (string item in cartItemsPricesListFullString)
             {
-                Assert.IsTrue(true);
+                cartItemsPricesListFullStringTrimmed.Add(item.Substring(0, item.Length - 2));
             }
 
+            List<double> cartItemsPricesListFullStringTrimmedConvertedToDouble = new List<double>();
+
+            foreach (string item in cartItemsPricesListFullStringTrimmed)
+            {
+                cartItemsPricesListFullStringTrimmedConvertedToDouble.Add(Convert.ToDouble(item));
+            }
+
+            double CartItemsTotalSum = cartItemsPricesListFullStringTrimmedConvertedToDouble.Sum();
+            double TotalSumFromSite = Convert.ToDouble(SumPrice.Text.Substring(0, SumPrice.Text.Length - 2));
+
+
+            Assert.AreEqual(TotalSumFromSite, CartItemsTotalSum, "Nesutampa.");
+
+
+            //string TrimTotalCartSumFromSite = SumPrice.Text.Substring(0, SumPrice.Text.Length - 2);
+            //int TotalCartSumFromSite = Convert.ToInt32(TrimTotalCartSumFromSite);
+
+            //Assert.AreEqual(TotalCartSumFromSite, cartItemsPricesListSum, "Nesutampa.");
             return this;
         }
-        */
     }
 }
