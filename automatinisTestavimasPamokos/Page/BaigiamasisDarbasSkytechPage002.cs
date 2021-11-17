@@ -28,7 +28,9 @@ namespace automatinisTestavimasPamokos.Page
         //private IWebElement SecondItemPrice => Driver.FindElement(By.XPath("/html/body/div[6]/div[1]/div[4]/div[2]/div[5]/form/div[1]/table[1]/tbody/tr[3]/td[6]"));
         private IWebElement SumPrice => Driver.FindElement(By.CssSelector("#ktotal-top"));
 
-        private IReadOnlyCollection<IWebElement> CartItems = Driver.FindElements(By.CssSelector(".shopping-cart-main-wrap"));
+        //private readonly IReadOnlyCollection<IWebElement> CartItems = Driver.FindElements(By.CssSelector("div.shopping-cart-main-wrap"));
+
+        private IReadOnlyCollection<IWebElement> CartItems => Driver.FindElements(By.XPath("/html/body/div[6]/div[1]/div[6]/div[2]/div[5]/form/div[1]/table[1]/tbody"));
 
         public SkytechNotebooksPage(IWebDriver webDriver) : base(webDriver)
         {
@@ -85,19 +87,35 @@ namespace automatinisTestavimasPamokos.Page
 
         public SkytechNotebooksPage CheckCartItemSum()
         {
-            List<int> ItemPrices = new List<int>();
+            List<int> CartItemsPriceFull = new List<int>();
+            int CartItemsPriceSum = CartItemsPriceFull.Sum();
 
-            foreach  (IWebElement element in CartItems)
+            foreach (IWebElement cartItem in CartItems)
             {
-                ItemPrices.Add(Convert.ToInt32(element.GetAttribute("line-price").Substring(0, element.GetAttribute("line-price").Length-2)));
+                CartItemsPriceFull.Add(Convert.ToInt32(cartItem.GetAttribute("line-price").Substring(0, cartItem.GetAttribute("line-price").Length - 2)));
             }
 
-            int ResultSumTotal = ItemPrices.Sum();
-
-            Assert.AreEqual(SumPrice, ResultSumTotal, "Kainos nesutampa.");
+            Assert.AreEqual(SumPrice, CartItemsPriceSum, "Kainos nesutampa.");
 
             return this;
         }
+
+
+
+        //{
+        //    List<int> ItemPrices = new List<int>();
+
+        //    foreach (IWebElement element in CartItems)
+        //    {
+        //        ItemPrices.Add(Convert.ToInt32(element.GetAttribute("line-price").Substring(0, element.GetAttribute("line-price").Length - 2)));
+        //    }
+
+        //    int ResultSumTotal = ItemPrices.Sum();
+
+        //    Assert.AreEqual(SumPrice, ResultSumTotal, "Kainos nesutampa.");
+
+        //    return this;
+        //}
 
         /*
         public SkytechNotebooksPage ChekCartItemsSum()
