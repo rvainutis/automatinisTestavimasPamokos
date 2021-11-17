@@ -23,10 +23,12 @@ namespace automatinisTestavimasPamokos.Page
         private IWebElement NotebookDellFirstAddToCartButton => Driver.FindElement(By.CssSelector("#centerpanel > div.contentbox-center-wrap.nopad > table.productListing > tbody > tr:nth-child(53) > td:nth-child(6) > div > div.button-label > input"));
         private IWebElement NotebookDellSecondAddToCartButton => Driver.FindElement(By.CssSelector("#centerpanel > div.contentbox-center-wrap.nopad > table.productListing > tbody > tr:nth-child(47) > td:nth-child(6) > div > div.button-label > input"));
         private IWebElement CartButton => Driver.FindElement(By.CssSelector("#krepselis > div > a > span"));
-        private IWebElement CartTotalItemsCountResult => Driver.FindElement(By.Id("kcenter"));        
-        private IWebElement SumPrice => Driver.FindElement(By.CssSelector("#ktotal-top"));                
-
-        private IReadOnlyCollection<IWebElement> CartItems => Driver.FindElements(By.CssSelector("td.line-price"));
+        private IWebElement CartTotalItemsCountResult => Driver.FindElement(By.Id("kcenter"));
+        private IWebElement SumPrice => Driver.FindElement(By.CssSelector("#ktotal-top"));
+        private IWebElement SearchField => Driver.FindElement(By.CssSelector("#body > div.pageouter > div.pagewrapper > div.pageheader > table > tbody > tr > td:nth-child(2) > div > form > div.search-wrap > input.search-field.inactive"));
+        private IReadOnlyCollection<IWebElement> CartItemsPrice => Driver.FindElements(By.CssSelector("td.line-price"));
+        private IReadOnlyCollection<IWebElement> CartItemsKiekisWidgetUp => Driver.FindElements(By.CssSelector(".up"));
+        //private IReadOnlyCollection<IWebElement> CartItemsKiekisWidgetUp => Driver.FindElements(By.CssSelector("td:nth-child(5)"));
 
         public SkytechNotebooksPage(IWebDriver webDriver) : base(webDriver)
         {
@@ -74,20 +76,26 @@ namespace automatinisTestavimasPamokos.Page
             CartButton.Click();
             return this;
         }
-
-        public SkytechNotebooksPage CheckCartItemsCount()
+        public SkytechNotebooksPage ClickSearchField()
         {
-            Assert.AreEqual(CartItemsCount, CartTotalItemsCountResult.Text, "Prekiu skaicius nesutampa.");
+            SearchField.Click();
             return this;
         }
 
-        public SkytechNotebooksPage CheckCartItemSum()
+        public SkytechNotebooksPage CheckCartItemsCount(int cartItemsCount)
+        {
+            int CartTotalItemsCountResultInt = Convert.ToInt32(CartTotalItemsCountResult.Text);
+            Assert.AreEqual(cartItemsCount, CartTotalItemsCountResultInt, "Prekiu skaicius nesutampa.");
+            return this;
+        }
+
+        public SkytechNotebooksPage CheckCartItemSum(int ItemAmountIncrease)
         {
             // Sarasas kainu formatu: "123.12 €"
 
             List<string> cartItemsPricesFull = new List<string>();            
 
-            foreach (IWebElement cartItem in CartItems)
+            foreach (IWebElement cartItem in CartItemsPrice)
             {
                 cartItemsPricesFull.Add(cartItem.Text);
             }
@@ -116,8 +124,27 @@ namespace automatinisTestavimasPamokos.Page
             
             double TotalSumFromSite = Convert.ToDouble(SumPrice.Text.Substring(0, SumPrice.Text.Length - 2).Replace(".", ",").Replace(" ", ""));
 
-            Assert.AreEqual(TotalSumFromSite, CartItemsTotalSum, "Nesutampa.");
+            if (ItemAmountIncrease != 0)
+            {
+                double TotalSumAfterAmountIncrease = CartItemsTotalSum * (ItemAmountIncrease + 1);
+                Assert.AreEqual(TotalSumAfterAmountIncrease, TotalSumFromSite, "Nesutampa.");
+            }
+            else
+            {
+                Assert.AreEqual(TotalSumFromSite, TotalSumFromSite, "Nesutampa.");
+            }
+            return this;
+        }
 
+        public SkytechNotebooksPage ClickCartItemsUpButton(int ItemAmountIncrease)
+        {
+            foreach (IWebElement cartItem in CartItemsKiekisWidgetUp)
+            {
+                for (int i = 1; i <= ItemAmountIncrease; i++)
+                {
+                    cartItem.Click();
+                }
+            }
             return this;
         }
     }

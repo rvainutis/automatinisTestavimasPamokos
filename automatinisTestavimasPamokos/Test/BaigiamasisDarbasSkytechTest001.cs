@@ -45,7 +45,7 @@ namespace automatinisTestavimasPamokos.Test
                 .CheckLoginResult();
         }
 
-        [TestCase("Osvaldas", "Penikas", "+37061212345", "vasodep168@elastit.com", "patsBaisiusiasFilmas_2021", TestName = "02 Skytech Register Test")]
+        [TestCase("Osvaldas", "Penikas", "+37061212345", "vasodep169@elastit.com", "patsBaisiusiasFilmas_2021", TestName = "02 Skytech Register Test")]
         public void TestRegister(string vardas, string pavarde, string telNr, string elPastas, string slaptazodis)
         {
             _page.ClickRegister()

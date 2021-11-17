@@ -31,8 +31,8 @@ namespace automatinisTestavimasPamokos.Test
 
         // Pasirenkame dvi prekes, krepselyje tikriname ju kainu suma su prekiu krepselio suma pateikta parduotuveje.
 
-        [Test]
-        public void TestDellNotebooksCheckoutSum()
+        [TestCase(0, 2, TestName = "001 Add two items, check item count and price sum.")]
+        public void TestDellNotebooksCheckoutSum(int ItemAmountIncrease, int cartItemsCount)
         {
             _page.ClickNotebookDellCategoryButton()
                 .ThreadSleep500()
@@ -46,9 +46,34 @@ namespace automatinisTestavimasPamokos.Test
                 .ThreadSleep500()
                 .ClickCartButton()
                 .ThreadSleep500()
-                .CheckCartItemsCount()
+                .CheckCartItemsCount(cartItemsCount)
                 .ThreadSleep500()
-                .CheckCartItemSum();
+                .CheckCartItemSum(ItemAmountIncrease);
+        }
+
+        [TestCase(2, 6, TestName = "002 Increase cart items amount by 2 and check price sum.")]
+        public void TestDellNotebooksDifferentItemsCountChekoutSum(int ItemAmountIncrease, int cartItemsCount)
+        {
+            _page.ClickNotebookDellCategoryButton()
+                .ThreadSleep500()
+                .ClickNotebookDellSecondPageButton()
+                .ThreadSleep500()
+                .ClickNotebookDellFirstAddToCartButton()
+                .ThreadSleep500()
+                .ClickNotebookDellThrirdPageButton()
+                .ThreadSleep500()
+                .ClickNotebookDellSecondAddToCartButton()
+                .ThreadSleep500()
+                .ClickCartButton()
+                .ThreadSleep500()
+                .ClickCartItemsUpButton(ItemAmountIncrease)
+                .ThreadSleep500()
+                .ClickSearchField()
+                .ThreadSleep500()
+                .CheckCartItemsCount(cartItemsCount)
+                .ThreadSleep500()
+                .CheckCartItemSum(ItemAmountIncrease)
+                .ThreadSleep500();
         }
     }
 }
