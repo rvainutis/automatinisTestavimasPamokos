@@ -20,9 +20,7 @@ namespace automatinisTestavimasPamokos.Drivers
         {
             return GetDriver(Browsers.Firefox);
         }
-
-
-        // sita eilute pasitikrinti
+        
         private static IWebDriver GetDriver(Browsers browserName)
         {
             IWebDriver driver = null;
