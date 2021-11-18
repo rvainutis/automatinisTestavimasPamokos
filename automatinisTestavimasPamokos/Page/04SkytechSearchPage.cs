@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace automatinisTestavimasPamokos.Page
 {
-    class BaigiamasisDarbasSkytechSearchPage
+    class SkytechSearchPage
     {
     }
 }
