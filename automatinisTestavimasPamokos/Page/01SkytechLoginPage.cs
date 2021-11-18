@@ -12,7 +12,7 @@ namespace automatinisTestavimasPamokos.Page
     public class SkytechLoginPage : BasePage
     {
         // konstantos
-        private const string PageAddress001 = "https://www.skytech.lt/login.php";
+        private const string SkytechLoginAddress = "https://www.skytech.lt/login.php";
         private const string ManoDuomenys = "Mano duomenys";
         private const string RegisterSuccess = "Jūsų paskyra sėkmingai sukurta!";
 
@@ -44,7 +44,7 @@ namespace automatinisTestavimasPamokos.Page
 
         public SkytechLoginPage(IWebDriver webDriver) : base(webDriver)
         {
-            Driver.Url = PageAddress001;
+            Driver.Url = SkytechLoginAddress;
         }
 
         // bendri

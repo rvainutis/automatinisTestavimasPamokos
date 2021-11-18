@@ -14,7 +14,7 @@ namespace automatinisTestavimasPamokos.Page
     {
         // konstantos
         // nuoroda i Dell nesiojamu kompiuteriu kategorija
-        private const string PageAddress002 = "https://www.skytech.lt/nesiojami-kompiuteriai-nesiojami-kompiuteriai-c-86_165_81.html?f=s(),g(142),p(),k(317.89,5668.00)&frag=&fragd=0&pav=undefined&sort=5a&sand=1&grp=1&pagesize=100&page=1";      // nesiojamu kompiuteriu puslapis        
+        private const string SkytechDellNotebooksAddress = "https://www.skytech.lt/nesiojami-kompiuteriai-nesiojami-kompiuteriai-c-86_165_81.html?f=s(),g(142),p(),k(317.89,5668.00)&frag=&fragd=0&pav=undefined&sort=5a&sand=1&grp=1&pagesize=100&page=1";      // nesiojamu kompiuteriu puslapis        
 
         // web elementai
         //private IWebElement NotebookDellCategoryButton => Driver.FindElement(By.CssSelector("#f-g-142 > div.line-wrap > span"));
@@ -31,7 +31,7 @@ namespace automatinisTestavimasPamokos.Page
 
         public SkytechDellNotebooksPage(IWebDriver webDriver) : base(webDriver)
         {
-            Driver.Url = PageAddress002;
+            Driver.Url = SkytechDellNotebooksAddress;
         }
 
         public SkytechDellNotebooksPage ThreadSleep500()
