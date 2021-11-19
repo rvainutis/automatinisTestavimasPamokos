@@ -28,6 +28,5 @@ namespace automatinisTestavimasPamokos.Test
         {
             _page.CloseBrowser();
         }
-
     }
 }
