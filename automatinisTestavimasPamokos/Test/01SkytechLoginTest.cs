@@ -39,10 +39,12 @@ namespace automatinisTestavimasPamokos.Test
         }
 
         // Kad testas butu sekmingas, kiekviena karta reikia keisti el. pasto adresa, nes kuriamas naujas vartotojas
-        [TestCase("Osvaldas", "Penikas", "+37061212345", "vasodep171@elastit.com", "patsBaisiusiasFilmas_2021", TestName = "02 Skytech Register Test")]
+        [TestCase("Osvaldas", "Penikas", "+37061212345", "vasodep173@elastit.com", "patsBaisiusiasFilmas_2021", TestName = "02 Skytech Register Test")]
         public void TestRegister(string vardas, string pavarde, string telNr, string elPastas, string slaptazodis)
         {
-            _skytechLoginPage.ClickRegister()
+            _skytechLoginPage.NavigateToDefaultPage()
+                .ThreadSleep500()
+                .ClickRegister()
                 .ClickVardasRegisterInput()
                 .InputVardasTextRegister(vardas)
                 .ThreadSleep500()
