@@ -10,30 +10,16 @@ using System.Threading.Tasks;
 
 namespace automatinisTestavimasPamokos.Test
 {
-    public class SkytechLoginTest
+    public class SkytechLoginTest : BaseTest
     {
-        private static SkytechLoginPage _page;
-
-        [OneTimeSetUp]
-        public static void SetUp()
-        {
-            IWebDriver driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Manage().Window.Maximize();
-            _page = new SkytechLoginPage(driver);
-        }
-
-        [OneTimeTearDown]
-        public void TestTearDown()
-        {
-            _page.CloseBrowser();
-        }
-        
         [TestCase("hohag62978@elastit.com", "gediminas.testauskas123", TestName = "01 Skytech Login Test")]
         public void TestLogin(string elPastoAdresas, string slaptazodisText)
         {
-            _page.ClickLogin()
+            _skytechLoginPage.NavigateToDefaultPage()
+                .ThreadSleep500()
+                .ClickLogin()
                 .ClickElPastoAdresasLoginInput()
+                .ThreadSleep500()
                 .InputElPastoAdresasLoginText(elPastoAdresas)
                 .ThreadSleep500()
                 .ClickSlaptazodisLoginInput()
@@ -45,10 +31,10 @@ namespace automatinisTestavimasPamokos.Test
                 .CheckLoginResult();
         }
 
-        [TestCase("Osvaldas", "Penikas", "+37061212345", "vasodep170@elastit.com", "patsBaisiusiasFilmas_2021", TestName = "02 Skytech Register Test")]
+        [TestCase("Osvaldas", "Penikas", "+37061212345", "vasodep171@elastit.com", "patsBaisiusiasFilmas_2021", TestName = "02 Skytech Register Test")]
         public void TestRegister(string vardas, string pavarde, string telNr, string elPastas, string slaptazodis)
         {
-            _page.ClickRegister()
+            _skytechLoginPage.ClickRegister()
                 .ClickVardasRegisterInput()
                 .InputVardasTextRegister(vardas)
                 .ThreadSleep500()

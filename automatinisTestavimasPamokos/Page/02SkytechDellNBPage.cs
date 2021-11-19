@@ -13,7 +13,7 @@ namespace automatinisTestavimasPamokos.Page
     public class SkytechDellNotebooksPage : BasePage
     {
         // konstantos        
-        private const string SkytechDellNotebooksAddress = "https://www.skytech.lt/nesiojami-kompiuteriai-nesiojami-kompiuteriai-c-86_165_81.html?f=s(),g(142),p(),k(317.89,5668.00)&frag=&fragd=0&pav=undefined&sort=5a&sand=1&grp=1&pagesize=100&page=1";
+        private const string PageAddress = "https://www.skytech.lt/nesiojami-kompiuteriai-nesiojami-kompiuteriai-c-86_165_81.html?f=s(),g(142),p(),k(317.89,5668.00)&frag=&fragd=0&pav=undefined&sort=5a&sand=1&grp=1&pagesize=100&page=1";
 
         // web elementai
         private IWebElement CartButton => Driver.FindElement(By.CssSelector("#krepselis > div > a > span"));
@@ -28,7 +28,14 @@ namespace automatinisTestavimasPamokos.Page
 
         public SkytechDellNotebooksPage(IWebDriver webDriver) : base(webDriver)
         {
-            Driver.Url = SkytechDellNotebooksAddress;
+            Driver.Url = PageAddress;
+        }
+
+        public SkytechDellNotebooksPage NavigateToDefaultPage()
+        {
+            if (Driver.Url != PageAddress)
+                Driver.Url = PageAddress;
+            return this;
         }
 
         public SkytechDellNotebooksPage ThreadSleep500()

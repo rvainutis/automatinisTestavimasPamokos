@@ -17,6 +17,9 @@ namespace automatinisTestavimasPamokos.Test
         public static IWebDriver driver;
         public static DropDownPage _dropDownPage;
         public static VartuTechnikaPage _vartuTechnikaPage;
+        public static SkytechLoginPage _skytechLoginPage;
+        public static SkytechDellNotebooksPage _skytechDellNotebooksPage;
+        public static SkytechSearchPage _skytechSearchPage;
 
         [OneTimeSetUp]
         public static void SetUp()
@@ -24,6 +27,9 @@ namespace automatinisTestavimasPamokos.Test
             driver = CustomDriver.GetChromeDriver();
             _dropDownPage = new DropDownPage(driver);
             _vartuTechnikaPage = new VartuTechnikaPage(driver);
+            _skytechLoginPage = new SkytechLoginPage(driver);
+            _skytechDellNotebooksPage = new SkytechDellNotebooksPage(driver);
+            _skytechSearchPage = new SkytechSearchPage(driver);
         }
 
         [TearDown]

@@ -10,29 +10,15 @@ using System.Threading.Tasks;
 
 namespace automatinisTestavimasPamokos.Test
 {
-    public class SkytechNotebooksTest
+    public class SkytechNotebooksTest : BaseTest
     {
-        private static SkytechDellNotebooksPage _page;        
-
-        [OneTimeSetUp]
-        public static void SetUp()
-        {
-            IWebDriver driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Manage().Window.Maximize();
-            _page = new SkytechDellNotebooksPage(driver);            
-        }
-
-        [OneTimeTearDown]
-        public void TestTearDown()
-        {
-            _page.CloseBrowser();
-        }
-        
         [TestCase(2, TestName = "03 Add two items, check items count.")]
         public void TestItemCount(int cartItemsCount)
         {
-            _page.ClickNotebookDellFirstAddToCartButton()
+            _skytechDellNotebooksPage
+                .NavigateToDefaultPage()
+                .ThreadSleep500()
+                .ClickNotebookDellFirstAddToCartButton()
                 .ThreadSleep500()
                 .ClickNotebookDellSecondAddToCartButton()
                 .ThreadSleep500()
@@ -43,7 +29,10 @@ namespace automatinisTestavimasPamokos.Test
         [TestCase(2, 2, 6, TestName = "04 Add two items, go to cart, increase cart items amount by 2 and check price sum.")]
         public void TestDellNotebooksDifferentItemsCountChekoutSum(int cartItemsCount, int ItemAmountIncrease, int cartItemsCountAfterIncrease)
         {
-            _page.ClickNotebookDellFirstAddToCartButton()
+            _skytechDellNotebooksPage
+                .NavigateToDefaultPage()
+                .ThreadSleep500()
+                .ClickNotebookDellFirstAddToCartButton()
                 .ThreadSleep500()
                 .ClickNotebookDellSecondAddToCartButton()
                 .ThreadSleep500()                

@@ -13,7 +13,7 @@ namespace automatinisTestavimasPamokos.Page
     public class SkytechSearchPage : BasePage
     {
         // konstantos
-        private const string SkytechCartAddress = "https://www.skytech.lt/search_form.html";
+        private const string PageAddress = "https://www.skytech.lt/search_form.html";
         private const string EmptySearchResult = "Nėra prekių, atitinkančių užduotus paieškos kriterijus.";
 
         // web elementai
@@ -26,7 +26,13 @@ namespace automatinisTestavimasPamokos.Page
 
         public SkytechSearchPage(IWebDriver webDriver) : base(webDriver)
         {
-            Driver.Url = SkytechCartAddress;
+            Driver.Url = PageAddress;
+        }
+        public SkytechSearchPage NavigateToDefaultPage()
+        {
+            if (Driver.Url != PageAddress)
+                Driver.Url = PageAddress;
+            return this;
         }
 
         public SkytechSearchPage ThreadSleep500()

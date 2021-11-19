@@ -10,30 +10,16 @@ using System.Threading.Tasks;
 
 namespace automatinisTestavimasPamokos.Test
 {
-    class SkytechSearchTest
+    class SkytechSearchTest : BaseTest
     {
-        private static SkytechSearchPage _page;
-
-        [OneTimeSetUp]
-        public static void SetUp()
-        {
-            IWebDriver driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Manage().Window.Maximize();
-            _page = new SkytechSearchPage(driver);
-        }
-
-        [OneTimeTearDown]
-        public void TestTearDown()
-        {
-            _page.CloseBrowser();
-        }
-
         // 270 - Kategorija: periferija, biuro iranga
         [TestCase("AW27255981D", "270", "Dell", TestName = "05 Test search fields, get empty list.")]
         public void TestItemCount(string searchQuery, string categoryValue, string manufacturer)
         {
-            _page.ClickSearchByAllWordsField()
+            _skytechSearchPage
+                .NavigateToDefaultPage()
+                .ThreadSleep500()
+                .ClickSearchByAllWordsField()
                 .ThreadSleep500()
                 .SendSearchTextToSearchByAllWordsField(searchQuery)
                 .ThreadSleep500()
