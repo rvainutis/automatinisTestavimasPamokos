@@ -10,6 +10,7 @@ namespace automatinisTestavimasPamokos.Page
     public class AlertPage : BasePage
     {
         private const string PageAddress = "https://demo.seleniumeasy.com/javascript-alert-box-demo.html";
+        private IWebElement AlertButton => Driver.FindElement(By.XPath("//button[@onclick='myAlertFunction()']"));
 
         public AlertPage(IWebDriver webDriver) : base(webDriver)
         { }
@@ -17,6 +18,18 @@ namespace automatinisTestavimasPamokos.Page
         {
             if (Driver.Url != PageAddress)
                 Driver.Url = PageAddress;
+            return this;
+        }
+
+        public AlertPage ClickAlertButton()
+        {
+            AlertButton.Click();
+            return this;
+        }
+        public AlertPage AcceptAlert()
+        {
+            IAlert alert = Driver.SwitchTo().Alert();
+            alert.Accept();
             return this;
         }
     }

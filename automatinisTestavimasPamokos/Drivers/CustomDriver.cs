@@ -16,7 +16,7 @@ namespace automatinisTestavimasPamokos.Drivers
             return GetDriver(Browsers.Chrome);
         }
 
-        public static IWebDriver GetIncognitoChromeDriver()
+        public static IWebDriver GetIncognitoChrome()
         {
             return GetDriver(Browsers.IncognitoChrome);
         }
@@ -41,7 +41,7 @@ namespace automatinisTestavimasPamokos.Drivers
                     break;
 
                 case Browsers.IncognitoChrome:
-                    driver = new GetChromeWithOptions();
+                    driver = GetChromeWithOptions();
                     break;
             }
 

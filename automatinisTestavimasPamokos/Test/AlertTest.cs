@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,12 @@ namespace automatinisTestavimasPamokos.Test
 {
     public class AlertTest : BaseTest
     {
+        [Test]
+        public void TestAlert()
+        {
+            _AlertPage.NavigateToDefaultPage()
+                .ClickAlertButton()
+                .AcceptAlert();
+        }
     }
 }
