@@ -33,9 +33,7 @@ namespace automatinisTestavimasPamokos.Page
 
         // veiksmai puslapyje, naudojant metodus
         public SkytechDellNotebooksPage(IWebDriver webDriver) : base(webDriver)
-        {
-            Driver.Url = PageAddress;
-        }
+        { }
         public SkytechDellNotebooksPage NavigateToDefaultPage()
         {
             if (Driver.Url != PageAddress)

@@ -20,6 +20,8 @@ namespace automatinisTestavimasPamokos.Test
         public static SkytechLoginPage _skytechLoginPage;
         public static SkytechDellNotebooksPage _skytechDellNotebooksPage;
         public static SkytechSearchPage _skytechSearchPage;
+        public static AlertPage _AlertPage;
+        
 
         [OneTimeSetUp]
         public static void SetUp()
@@ -30,6 +32,9 @@ namespace automatinisTestavimasPamokos.Test
             _skytechLoginPage = new SkytechLoginPage(driver);
             _skytechDellNotebooksPage = new SkytechDellNotebooksPage(driver);
             _skytechSearchPage = new SkytechSearchPage(driver);
+            _AlertPage = new AlertPage(driver);
+
+
         }
 
         [TearDown]

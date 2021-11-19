@@ -47,9 +47,7 @@ namespace automatinisTestavimasPamokos.Page
 
         // veiksmai puslapyje, naudojant metodus
         public SkytechLoginPage(IWebDriver webDriver) : base(webDriver)
-        {
-            Driver.Url = PageAddress;
-        }
+        { }
         public SkytechLoginPage NavigateToDefaultPage()
         {
             if (Driver.Url != PageAddress)

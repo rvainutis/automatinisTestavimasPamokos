@@ -66,6 +66,7 @@
     <Compile Include="Page\03SkytechSearchPage.cs" />
     <Compile Include="Page\01SkytechLoginPage.cs" />
     <Compile Include="Page\02SkytechDellNBPage.cs" />
+    <Compile Include="Page\AlertPage.cs" />
     <Compile Include="Page\BasePage.cs" />
     <Compile Include="Page\DropDownPage.cs" />
     <Compile Include="Page\nd03Page.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Test\03SkytechSearchTest.cs" />
     <Compile Include="Test\01SkytechLoginTest.cs" />
     <Compile Include="Test\02SkytechDellNBTest.cs" />
+    <Compile Include="Test\AlertTest.cs" />
     <Compile Include="Test\BaseTest.cs" />
     <Compile Include="Test\DropDownTest.cs" />
     <Compile Include="Test\nd03Test.cs" />
