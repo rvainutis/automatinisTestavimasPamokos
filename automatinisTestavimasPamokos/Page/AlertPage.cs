@@ -11,6 +11,8 @@ namespace automatinisTestavimasPamokos.Page
     {
         private const string PageAddress = "https://demo.seleniumeasy.com/javascript-alert-box-demo.html";
         private IWebElement AlertButton => Driver.FindElement(By.XPath("//button[@onclick='myAlertFunction()']"));
+        private IWebElement ConfirmationAlertButton => Driver.FindElement(By.XPath("//button[@onclick='myConfirmFunction()']"));
+        private IWebElement ClickMeButton => Driver.FindElement(By.XPath("//button[@onclick='myPromptFunction()']"));
 
         public AlertPage(IWebDriver webDriver) : base(webDriver)
         { }
@@ -30,6 +32,16 @@ namespace automatinisTestavimasPamokos.Page
         {
             IAlert alert = Driver.SwitchTo().Alert();
             alert.Accept();
+            return this;
+        }
+        public AlertPage ClickConfirmationAlertButton()
+        {
+            ConfirmationAlertButton.Click();
+            return this;
+        }
+        public AlertPage ClickClickMeButton()
+        {
+            ClickMeButton.Click();
             return this;
         }
     }

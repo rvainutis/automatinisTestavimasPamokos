@@ -16,5 +16,17 @@ namespace automatinisTestavimasPamokos.Test
                 .ClickAlertButton()
                 .AcceptAlert();
         }
+        [Test]
+        public void TestConfirmationAlert()
+        {
+            _AlertPage.NavigateToDefaultPage()
+                .ClickConfirmationAlertButton();
+        }
+        [Test]
+        public void TestClickMe()
+        {
+            _AlertPage.NavigateToDefaultPage()
+                .ClickClickMeButton();
+        }
     }
 }

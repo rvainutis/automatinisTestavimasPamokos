@@ -33,8 +33,6 @@ namespace automatinisTestavimasPamokos.Test
             _skytechDellNotebooksPage = new SkytechDellNotebooksPage(driver);
             _skytechSearchPage = new SkytechSearchPage(driver);
             _AlertPage = new AlertPage(driver);
-
-
         }
 
         [TearDown]
