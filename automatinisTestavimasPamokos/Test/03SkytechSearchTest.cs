@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace automatinisTestavimasPamokos.Test
 {
-    class SkytechCartTest
+    class SkytechSearchTest
     {
-        private static SkytechCartPage _page;
+        private static SkytechSearchPage _page;
 
         [OneTimeSetUp]
         public static void SetUp()
@@ -20,7 +20,7 @@ namespace automatinisTestavimasPamokos.Test
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Manage().Window.Maximize();
-            _page = new SkytechCartPage(driver);
+            _page = new SkytechSearchPage(driver);
         }
 
         [OneTimeTearDown]
@@ -28,5 +28,7 @@ namespace automatinisTestavimasPamokos.Test
         {
             _page.CloseBrowser();
         }
+
+
     }
 }
