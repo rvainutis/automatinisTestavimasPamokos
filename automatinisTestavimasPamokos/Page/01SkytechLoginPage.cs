@@ -1,4 +1,10 @@
-﻿using NUnit.Framework;
+﻿/*
+    2021-11-19, Rimvydas Vainutis
+    Baigiamasis darbas, Skytech.lt svetaines funkcionalumo testavimas
+    LoginPage
+*/
+
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -17,9 +23,7 @@ namespace automatinisTestavimasPamokos.Page
         private const string RegisterSuccess = "Jūsų paskyra sėkmingai sukurta!";
 
         // web elementai
-
         // esamas vartotojas
-
         private IWebElement PrisijunkiteMain => Driver.FindElement(By.CssSelector("#body > div.pageouter > div.pagewrapper > div.topmenu-wrap > div > div > a.link-login"));
         private IWebElement ElPastoAdresasLoginInput => Driver.FindElement(By.CssSelector("#checkout_login_login > div:nth-child(1) > div:nth-child(2) > input[type=text]"));
         private IWebElement SlaptazodisLoginInput => Driver.FindElement(By.CssSelector("#checkout_login_login > div:nth-child(2) > div:nth-child(2) > input[type=password]"));
@@ -28,7 +32,6 @@ namespace automatinisTestavimasPamokos.Page
         private IWebElement ManoDuomenysCheck => Driver.FindElement(By.CssSelector("#centerpanel > div > table > tbody > tr > td.static-title > span"));
 
         // naujas vartotojas
-
         private IWebElement UzsiregistruotiButton => Driver.FindElement(By.CssSelector("#body > div.pageouter > div.pagewrapper > div.topmenu-wrap > div > div > a.link-register"));
         private IWebElement VardasRegisterInput => Driver.FindElement(By.CssSelector("#checkout_login_register > div:nth-child(1) > div:nth-child(2) > input[type=text]"));
         private IWebElement PavardeRegisterInput => Driver.FindElement(By.CssSelector("#checkout_login_register > div:nth-child(2) > div:nth-child(2) > input[type=text]"));
@@ -42,6 +45,7 @@ namespace automatinisTestavimasPamokos.Page
         private IWebElement SubmitRegisterButton => Driver.FindElement(By.CssSelector("#submit-register > div > input"));
         private IWebElement CheckRegisterSuccess => Driver.FindElement(By.CssSelector("#centerpanel > table > tbody > tr > td.static-title > span"));
 
+        // veiksmai puslapyje, naudojant metodus
         public SkytechLoginPage(IWebDriver webDriver) : base(webDriver)
         {
             Driver.Url = PageAddress;
@@ -52,176 +56,148 @@ namespace automatinisTestavimasPamokos.Page
                 Driver.Url = PageAddress;
             return this;
         }
-
-        // bendri
         public SkytechLoginPage ClickLogin()
         {
             PrisijunkiteMain.Click();
             return this;
         }
-
         public SkytechLoginPage ThreadSleep500()
         {
             Thread.Sleep(500);
             return this;
         }
-
         public SkytechLoginPage CheckLoginResult()
         {
             Assert.AreEqual(ManoDuomenys, ManoDuomenysCheck.Text, "Nesutampa/Neprisijunges");
             return this;
         }
 
-        // veiksmai
         // esamas vartotojas
-
         public SkytechLoginPage ClickElPastoAdresasLoginInput()
         {
             ElPastoAdresasLoginInput.Click();
             ElPastoAdresasLoginInput.Clear();
             return this;
         }
-
         public SkytechLoginPage InputElPastoAdresasLoginText(string elPastoAdresas)
         {
             ElPastoAdresasLoginInput.SendKeys(elPastoAdresas);
             return this;
         }
-
         public SkytechLoginPage ClickSlaptazodisLoginInput()
         {
             SlaptazodisLoginInput.Click();
             SlaptazodisLoginInput.Clear();
             return this;
         }
-
         public SkytechLoginPage InputSlaptazodisLoginText(string slaptazodisText)
         {
             SlaptazodisLoginInput.SendKeys(slaptazodisText);
             return this;
         }
-
         public SkytechLoginPage CheckmarkPrisimintiManeLogin()
         {
             PrisimintiMane.Click();
             return this;
         }
-
         public SkytechLoginPage ClickPrisijungtiButtonLogin()
         {
             PrisijungtiButton.Click();
             return this;
         }
-
+        
         // naujas vartotojas
         public SkytechLoginPage ClickRegister()
         {
             UzsiregistruotiButton.Click();
             return this;
         }
-
         public SkytechLoginPage ClickVardasRegisterInput()
         {
             VardasRegisterInput.Click();
             VardasRegisterInput.Clear();            
             return this;
-        }
-        
+        }        
         public SkytechLoginPage InputVardasTextRegister(string vardas)
         {
             VardasRegisterInput.SendKeys(vardas);
             return this;
         }
-
         public SkytechLoginPage ClickPavardeRegisterInput()
         {
             PavardeRegisterInput.Click();
             PavardeRegisterInput.Clear();
             return this;
         }
-
         public SkytechLoginPage InputPavardeTextRegister(string pavarde)
         {
             PavardeRegisterInput.SendKeys(pavarde);
             return this;
         }
-
         public SkytechLoginPage ClickTelNrRegisterInput()
         {
             TelNrRegisterInput.Click();
             TelNrRegisterInput.Clear();
             return this;
         }
-
         public SkytechLoginPage InputTelNrTextRegister(string telNr)
         {
             TelNrRegisterInput.SendKeys(telNr);
             return this;
         }
-
         public SkytechLoginPage ClickElPastasRegisterInput()
         {
             ElPastoAdresasRegisterInput.Click();
             ElPastoAdresasRegisterInput.Clear();
             return this;
         }
-
         public SkytechLoginPage InputElPastasTextRegister(string elPastas)
         {
             ElPastoAdresasRegisterInput.SendKeys(elPastas);
             return this;
         }
-
         public SkytechLoginPage ClickSlaptazodisRegisterInput()
         {
             SlaptazodisRegisterInput.Click();
             SlaptazodisRegisterInput.Clear();
             return this;
         }
-
         public SkytechLoginPage InputSlaptazodisTextRegister(string slaptazodis)
         {
             SlaptazodisRegisterInput.SendKeys(slaptazodis);
             return this;
         }
-
         public SkytechLoginPage ClickSlaptazodisKartotiRegisterInput()
         {
             SlaptazodisKartotiRegisterInput.Click();
             SlaptazodisKartotiRegisterInput.Clear();
             return this;
         }
-
         public SkytechLoginPage InputSlaptazodisKartotiTextRegister(string slaptazodis)
         {
             SlaptazodisKartotiRegisterInput.SendKeys(slaptazodis);
             return this;
         }
-
         public SkytechLoginPage ClickCheckmarkTaisyklesRegister()
         {
             CheckTaisyklesRegister.Click();
             return this;
         }
-
         public SkytechLoginPage ClickCheckPrivatumasRegister()
         {
             CheckPrivatumasRegister.Click();
             return this;
         }
-
         public SkytechLoginPage ClickCheckNaujienosRegister()
         {
             CheckNaujienosRegister.Click();
             return this;
         }
-
         public SkytechLoginPage ClickSubmitRegisterButton()
         {
             SubmitRegisterButton.Click();
             return this;
         }
-
         public SkytechLoginPage CheckRegisterSuccessText()
         {
             Assert.AreEqual(RegisterSuccess, CheckRegisterSuccess.Text, "Nesutampa/Nepavyko uzsiregistruoti.");

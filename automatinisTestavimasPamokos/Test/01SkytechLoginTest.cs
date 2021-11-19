@@ -1,4 +1,10 @@
-﻿using automatinisTestavimasPamokos.Page;
+﻿/*
+    2021-11-19, Rimvydas Vainutis
+    Baigiamasis darbas, Skytech.lt svetaines funkcionalumo testavimas
+    LoginTest
+*/
+
+using automatinisTestavimasPamokos.Page;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -12,6 +18,7 @@ namespace automatinisTestavimasPamokos.Test
 {
     public class SkytechLoginTest : BaseTest
     {
+        // Vartotojas sukurtas butent siam testui
         [TestCase("hohag62978@elastit.com", "gediminas.testauskas123", TestName = "01 Skytech Login Test")]
         public void TestLogin(string elPastoAdresas, string slaptazodisText)
         {
@@ -31,6 +38,7 @@ namespace automatinisTestavimasPamokos.Test
                 .CheckLoginResult();
         }
 
+        // Kad testas butu sekmingas, kiekviena karta reikia keisti el. pasto adresa, nes kuriamas naujas vartotojas
         [TestCase("Osvaldas", "Penikas", "+37061212345", "vasodep171@elastit.com", "patsBaisiusiasFilmas_2021", TestName = "02 Skytech Register Test")]
         public void TestRegister(string vardas, string pavarde, string telNr, string elPastas, string slaptazodis)
         {

@@ -1,4 +1,10 @@
-﻿using automatinisTestavimasPamokos.Page;
+﻿/*
+    2021-11-19, Rimvydas Vainutis
+    Baigiamasis darbas, Skytech.lt svetaines funkcionalumo testavimas
+    SearchTest
+*/
+
+using automatinisTestavimasPamokos.Page;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;

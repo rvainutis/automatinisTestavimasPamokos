@@ -1,4 +1,10 @@
-﻿using NUnit.Framework;
+﻿/*
+    2021-11-19, Rimvydas Vainutis
+    Baigiamasis darbas, Skytech.lt svetaines funkcionalumo testavimas
+    SearchPage
+*/
+
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -24,6 +30,7 @@ namespace automatinisTestavimasPamokos.Page
         private IWebElement SiteSearchResultEmpty => Driver.FindElement(By.CssSelector("#centerpanel > div.contentbox-center-wrap.nopad > table > tbody > tr > td"));
         private IWebElement SearchButton => Driver.FindElement(By.CssSelector("#searchform > table > tbody > tr:nth-child(8) > td:nth-child(1) > input"));
 
+        // veiksmai puslapyje, naudojant metodus
         public SkytechSearchPage(IWebDriver webDriver) : base(webDriver)
         {
             Driver.Url = PageAddress;
@@ -34,32 +41,27 @@ namespace automatinisTestavimasPamokos.Page
                 Driver.Url = PageAddress;
             return this;
         }
-
         public SkytechSearchPage ThreadSleep500()
         {
             Thread.Sleep(500);
             return this;
         }
-
         public SkytechSearchPage ClickSearchByAllWordsField()
         {
             SearchByAllWordsField.Click();
             return this;
         }
-
         public SkytechSearchPage SendSearchTextToSearchByAllWordsField(string searchQuery)
         {
             SearchByAllWordsField.Clear();
             SearchByAllWordsField.SendKeys(searchQuery);
             return this;
         }
-
         public SkytechSearchPage ClickTitlesAndDescriptionsRadioButton()
         {
             TitlesAndDescriptionsRadioButton.Click();
             return this;
         }
-
         public SkytechSearchPage ClickManufacturerField()
         {
             ManufacturerField.Click();
@@ -71,27 +73,20 @@ namespace automatinisTestavimasPamokos.Page
             ManufacturerField.SendKeys(manufacturer);
             return this;
         }
-
         public SkytechSearchPage CheckSiteSearchResultEmpty()
         {
             Assert.AreEqual(EmptySearchResult, SiteSearchResultEmpty.Text, "Prekiu buvo rasta.");
             return this;
         }
-
         public SkytechSearchPage SelectFromCategoryList(string value)
         {
             CategoryList.SelectByValue(value);
             return this;
         }
-
         public SkytechSearchPage ClickSearchButton()
         {
             SearchButton.Click();
             return this;
         }
-
-
-
-
     }
 }

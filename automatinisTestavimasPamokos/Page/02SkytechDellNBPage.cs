@@ -1,4 +1,10 @@
-﻿using NUnit.Framework;
+﻿/*
+    2021-11-19, Rimvydas Vainutis
+    Baigiamasis darbas, Skytech.lt svetaines funkcionalumo testavimas
+    DellNotebooksPage
+*/
+
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -25,56 +31,48 @@ namespace automatinisTestavimasPamokos.Page
         private IReadOnlyCollection<IWebElement> CartItemsPrice => Driver.FindElements(By.CssSelector("td.line-price"));
         private IReadOnlyCollection<IWebElement> CartItemsKiekisWidgetUp => Driver.FindElements(By.CssSelector(".up"));
 
-
+        // veiksmai puslapyje, naudojant metodus
         public SkytechDellNotebooksPage(IWebDriver webDriver) : base(webDriver)
         {
             Driver.Url = PageAddress;
         }
-
         public SkytechDellNotebooksPage NavigateToDefaultPage()
         {
             if (Driver.Url != PageAddress)
                 Driver.Url = PageAddress;
             return this;
         }
-
         public SkytechDellNotebooksPage ThreadSleep500()
         {
             Thread.Sleep(500);
             return this;
         }        
-
         public SkytechDellNotebooksPage ClickNotebookDellFirstAddToCartButton()
         {
             NotebookDellFirstAddToCartButton.Click();
             return this;
         }        
-
         public SkytechDellNotebooksPage ClickNotebookDellSecondAddToCartButton()
         {
             NotebookDellSecondAddToCartButton.Click();
             return this;
         }
-
         public SkytechDellNotebooksPage CheckCartItemsCount(int cartItemsCount)
         {
             int CartTotalItemsCountResultInt = Convert.ToInt32(CartTotalItemsCountResult.Text);
             Assert.AreEqual(cartItemsCount, CartTotalItemsCountResultInt, "Prekiu skaicius nesutampa.");
             return this;
         }
-
         public SkytechDellNotebooksPage ClickCartButton()
         {
             CartButton.Click();
             return this;
         }
-
         public SkytechDellNotebooksPage ClickSearchField()
         {
             SearchField.Click();
             return this;
         }
-
         public SkytechDellNotebooksPage CheckCartItemSum(int ItemAmountIncrease)
         {
             // Sarasas kainu formatu: "123.12 €"
