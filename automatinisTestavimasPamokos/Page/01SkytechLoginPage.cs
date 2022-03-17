@@ -6,12 +6,7 @@
 
 using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace automatinisTestavimasPamokos.Page
 {
@@ -103,7 +98,7 @@ namespace automatinisTestavimasPamokos.Page
             PrisijungtiButton.Click();
             return this;
         }
-        
+
         // naujas vartotojas
         public SkytechLoginPage ClickRegister()
         {
@@ -113,9 +108,9 @@ namespace automatinisTestavimasPamokos.Page
         public SkytechLoginPage ClickVardasRegisterInput()
         {
             VardasRegisterInput.Click();
-            VardasRegisterInput.Clear();            
+            VardasRegisterInput.Clear();
             return this;
-        }        
+        }
         public SkytechLoginPage InputVardasTextRegister(string vardas)
         {
             VardasRegisterInput.SendKeys(vardas);

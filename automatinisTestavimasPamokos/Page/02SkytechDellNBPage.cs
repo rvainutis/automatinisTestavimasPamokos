@@ -6,13 +6,10 @@
 
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace automatinisTestavimasPamokos.Page
 {
@@ -44,12 +41,12 @@ namespace automatinisTestavimasPamokos.Page
         {
             Thread.Sleep(500);
             return this;
-        }        
+        }
         public SkytechDellNotebooksPage ClickNotebookDellFirstAddToCartButton()
         {
             NotebookDellFirstAddToCartButton.Click();
             return this;
-        }        
+        }
         public SkytechDellNotebooksPage ClickNotebookDellSecondAddToCartButton()
         {
             NotebookDellSecondAddToCartButton.Click();

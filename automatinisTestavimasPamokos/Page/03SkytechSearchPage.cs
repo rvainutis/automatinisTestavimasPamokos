@@ -7,12 +7,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace automatinisTestavimasPamokos.Page
 {
@@ -23,7 +18,7 @@ namespace automatinisTestavimasPamokos.Page
         private const string EmptySearchResult = "Nėra prekių, atitinkančių užduotus paieškos kriterijus.";
 
         // web elementai
-        private IWebElement SearchByAllWordsField => Driver.FindElement(By.CssSelector("#searchform > table > tbody > tr:nth-child(1) > td:nth-child(3) > input[type=text]"));        
+        private IWebElement SearchByAllWordsField => Driver.FindElement(By.CssSelector("#searchform > table > tbody > tr:nth-child(1) > td:nth-child(3) > input[type=text]"));
         private IWebElement TitlesAndDescriptionsRadioButton => Driver.FindElement(By.CssSelector("#searchform > table > tbody > tr:nth-child(4) > td:nth-child(3) > input:nth-child(3)"));
         private SelectElement CategoryList => new SelectElement(Driver.FindElement(By.CssSelector("#searchform > table > tbody > tr:nth-child(5) > td:nth-child(3) > select")));
         private IWebElement ManufacturerField => Driver.FindElement(By.Id("gamintojas"));

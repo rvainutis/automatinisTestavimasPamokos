@@ -4,15 +4,7 @@
     DellNotebooksTest
 */
 
-using automatinisTestavimasPamokos.Page;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace automatinisTestavimasPamokos.Test
 {
@@ -45,7 +37,7 @@ namespace automatinisTestavimasPamokos.Test
                 .ClickNotebookDellFirstAddToCartButton()
                 .ThreadSleep500()
                 .ClickNotebookDellSecondAddToCartButton()
-                .ThreadSleep500()                
+                .ThreadSleep500()
                 .ClickCartButton()
                 .ThreadSleep500()
                 .CheckCartItemsCount(cartItemsCount)

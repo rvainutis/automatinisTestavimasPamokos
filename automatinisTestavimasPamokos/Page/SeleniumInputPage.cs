@@ -1,10 +1,5 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace automatinisTestavimasPamokos.Page
 {
@@ -19,9 +14,9 @@ namespace automatinisTestavimasPamokos.Page
         private IWebElement _inputB => _driver.FindElement(By.Id("sum2"));
         private IWebElement _buttonGetTotal => _driver.FindElement(By.CssSelector("#gettotal > button"));
         private IWebElement _atsakymas => _driver.FindElement(By.Id("displayvalue"));
-        
+
         // konstruktorius tam, kad Test galetume susieti
-        public SeleniumInputPage (IWebDriver webDriver)
+        public SeleniumInputPage(IWebDriver webDriver)
         {
             _driver = webDriver;
         }

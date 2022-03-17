@@ -4,11 +4,6 @@ using automatinisTestavimasPamokos.Tools;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace automatinisTestavimasPamokos.Test
 {
@@ -21,7 +16,7 @@ namespace automatinisTestavimasPamokos.Test
         public static SkytechDellNotebooksPage _skytechDellNotebooksPage;
         public static SkytechSearchPage _skytechSearchPage;
         public static AlertPage _AlertPage;
-        
+
 
         [OneTimeSetUp]
         public static void SetUp()

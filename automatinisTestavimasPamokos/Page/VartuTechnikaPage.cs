@@ -2,10 +2,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace automatinisTestavimasPamokos.Page
 {
@@ -78,7 +74,7 @@ namespace automatinisTestavimasPamokos.Page
             wait.Until(d => _resultBox.Displayed);
         }
 
-        public VartuTechnikaPage CheckResult (string expectedResult)
+        public VartuTechnikaPage CheckResult(string expectedResult)
         {
             WaitForResult();
             Assert.IsTrue(_resultBox.Text.Contains(expectedResult), $"Result is not the same, expected {expectedResult}, but was {_resultBox.Text}");
